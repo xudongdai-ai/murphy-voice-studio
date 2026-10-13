@@ -1,0 +1,41 @@
+name: Update bilingual studio
+on:
+  push:
+    paths:
+      - source-update.zip
+      - .github/workflows/update-source.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract verified source package
+        run: |
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          import zipfile, os
+          root = Path.cwd().resolve()
+          package = root / "source-update.zip"
+          if not package.exists():
+              raise SystemExit("source-update.zip is missing")
+          with zipfile.ZipFile(package) as archive:
+              for item in archive.infolist():
+                  target = (root / item.filename).resolve()
+                  if not target.is_relative_to(root) or ".git" in Path(item.filename).parts:
+                      raise SystemExit("Unsafe archive path")
+              archive.extractall(root)
+              for item in archive.infolist():
+                  mode = (item.external_attr >> 16) & 0o777
+                  if mode and not item.is_dir():
+                      os.chmod(root / item.filename, mode)
+          package.unlink()
+          (root / ".github/workflows/update-source.yml").unlink()
+          PYTHON
+          git config user.name "MurphyProd1"
+          git config user.email "249086763+xudongdai-ai@users.noreply.github.com"
+          git add --all --force
+          git commit -m "Add English and Chinese interfaces, previews and bilingual README"
+          git push origin HEAD:main
