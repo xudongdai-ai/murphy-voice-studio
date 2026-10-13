@@ -1,59 +1,73 @@
 # Murphy Voice Studio · AI唱歌克隆
 
-米白暖金风格的本地 AI 声音工作台，基于 [Applio](https://github.com/IAHispano/Applio) 定制。提供歌声音色转换、声音模型训练、TTS、声音融合、实时变声和音频工具。
+A local AI singing and voice studio with a warm ivory interface. Voice conversion, model training, TTS, voice blending, realtime voice changing and audio tools — with English and Chinese interfaces.
 
-**界面定制：MurphyProd1 · 有问题联系微信：MurphyProd1**
+米白暖金风格的本地 AI 歌声与声音工作台，支持歌声转换、模型训练、TTS、声音融合、实时变声和音频工具，可选择英文或中文界面。
 
-![AI唱歌克隆 · 实际运行界面](preview/ai唱歌克隆-米白版.png)
+**Author / 作者：MurphyProd1 · Support on WeChat / 有问题联系微信：MurphyProd1**
 
-## 功能与界面
+![Murphy Voice Studio · English interface](preview/murphy-voice-studio-en.png)
 
-- 中文米白音乐工作台：声波首页、模型与索引卡片、唱片上传区域。
-- 单曲与批量转换：选择模型、上传音频、调整参数并导出歌声。
-- 模型训练、TTS、声音融合、实时变声、模型下载及音频工具。
-- 适配桌面和手机浏览器，保留原项目的实际后端功能。
+[English](#english) · [中文](#中文)
 
-截图来自本机实际运行页面。界面、导航、模型刷新和音频上传已验证；本次未重新验证完整训练和歌声转换流程。
+## English
 
-## 启动
+### Features
 
-本仓库是源码，需自行准备 Python 环境、FFmpeg 和模型。请按 [原项目说明](app/README.md) 与安装脚本配置对应平台的依赖。
+- Single track and batch voice conversion, voice models and audio export.
+- Model training, TTS, voice blending, realtime voice changing and audio tools.
+- Warm ivory design for desktop and mobile browsers.
+- Select **English** or **简体中文** at the top, then click **Apply & Restart**. The studio remembers your choice and reloads the interface after restarting.
+
+### Setup
+
+Prepare Python, FFmpeg and platform-specific dependencies following the [upstream setup guide](app/README.md).
 
 ```bash
 git clone https://github.com/xudongdai-ai/murphy-voice-studio.git
 cd murphy-voice-studio/app
-# 配好对应平台的 Python 环境后：
+# Use a Python environment configured for your platform.
 python -m pip install -r requirements.txt
 python app.py --open
 ```
 
-默认网页地址为 `http://127.0.0.1:6969`。首次运行会按原项目逻辑下载基础模型，需要网络和可用磁盘空间。将自己的 `.pth` 和 `.index` 文件放到 `app/logs/<模型名>/`，在网页选择后使用。
+Default URL: `http://127.0.0.1:6969`. Put your `.pth` and `.index` models in `app/logs/<model-name>/`. The first launch downloads the required base models.
 
-macOS 配好 `app/env`、`app/.venv` 或根目录 `.venv` 后，可双击 `start.command`；也可通过 `AI_CLONE_PYTHON` 指定 Python 路径。
+On macOS, after configuring `app/env`, `app/.venv` or the root `.venv`, use `start.command`; `AI_CLONE_PYTHON` can specify another Python executable. The desktop launcher in `desktop/` requires an existing installation at `~/pinokio/api/applio.git/app`.
 
-原始安装脚本默认 Python 3.12；本次已运行环境为 macOS Apple Silicon、Python 3.10.15、Gradio 5.23.1、PyTorch 2.7.1。`environment-macos-python310.txt` 是本机环境快照，包含传递依赖，供迁移参考，不是跨平台锁文件。全新机器安装和 Gradio 6 尚未实机验证。
+Verified locally on macOS Apple Silicon with Python 3.10.15, Gradio 5.23.1 and PyTorch 2.7.1. The upstream installer targets Python 3.12. `environment-macos-python310.txt` records the local environment; it is not a cross-platform lockfile. A clean installation on another machine, Gradio 6, full training and voice conversion have not been reverified for this customization.
 
-## 项目目录
+### Source
 
-| 路径 | 内容 |
-| --- | --- |
-| `app/` | 应用源码与原项目文档 |
-| `app/assets/brand.py` | 名称、首页、作者、联系方式 |
-| `app/assets/brand.css` | 定制界面样式 |
-| `app/assets/themes/AISinging.py` | 米白暖金主题 |
-| `app/assets/ui/upload-art.svg` | 上传区域矢量装饰 |
-| `preview/` | 实际运行截图与验证记录 |
-| `start.command` | macOS 源码启动脚本 |
-| `desktop/` | macOS 桌面启动器备份 |
+`app/` contains application code; `app/assets/brand.py`, `brand.css` and `themes/AISinging.py` define the custom interface. `preview/` contains actual screenshots.
 
-`desktop/ai唱歌克隆.app` 依赖 `~/pinokio/api/applio.git/app` 的已有安装；它不是自带 Python 和模型的独立安装包。迁移时优先使用源码和 `start.command`。
+Python environments, downloaded models, private audio and training data are excluded. Bundled upstream reference fixtures are included.
 
-仓库不包含 Python 环境、下载模型、用户训练权重、私人音频或生成音频。原项目随源码提供的静音和参考测试素材保留。实时设备和历史模型配置已清空，默认关闭 Discord 状态显示。
+### License
 
-## 更多预览
+Developed as a customization of [Applio](https://github.com/IAHispano/Applio). [MIT License](LICENSE).
 
-[完整桌面界面](preview/ai唱歌克隆-前端预览.png) · [手机界面](preview/ai唱歌克隆-手机.png) · [验证说明](preview/验证说明.md)
+## 中文
 
-## 开源来源
+### 功能
 
-本项目基于 Applio（AI Hispano）的 MIT 授权源码进行界面定制。原始版权及许可全文保存在 [LICENSE](LICENSE) 和 [app/LICENSE](app/LICENSE)，原始使用条款保存在 [app/TERMS_OF_USE.md](app/TERMS_OF_USE.md)。MurphyProd1 为本次界面定制版的作者与联系方式。
+- 单曲及批量歌声转换、声音模型选择与音频导出。
+- 模型训练、TTS、声音融合、实时变声和音频工具。
+- 米白暖金界面，适配桌面与手机浏览器。
+- 在首页顶部选择 **English** 或 **简体中文**，点击 **应用并重启**；软件会记住选择，重启后自动刷新界面。
+
+![AI唱歌克隆 · 中文界面](preview/murphy-voice-studio-zh.png)
+
+### 启动
+
+先按[原项目安装说明](app/README.md)配置 Python、FFmpeg 和对应平台的依赖，再执行上面的启动命令。网页默认地址为 `http://127.0.0.1:6969`。模型放到 `app/logs/<模型名>/`，首次启动会下载所需基础模型。
+
+macOS 配好 `app/env`、`app/.venv` 或根目录 `.venv` 后，可双击 `start.command`；也可通过 `AI_CLONE_PYTHON` 指定 Python 路径。`desktop/` 中的启动器依赖 `~/pinokio/api/applio.git/app` 的已有安装。
+
+本机验证环境为 macOS Apple Silicon、Python 3.10.15、Gradio 5.23.1、PyTorch 2.7.1。原始安装脚本默认 Python 3.12，环境快照仅供迁移参考。新机器安装、Gradio 6、完整训练和歌声转换流程未在本次定制中重新验证。
+
+源码不含 Python 环境、下载模型、私人音频与训练数据，保留原项目随源码提供的参考素材。
+
+### 开源说明
+
+基于 [Applio](https://github.com/IAHispano/Applio) 二次开发。[MIT 许可证](LICENSE)。

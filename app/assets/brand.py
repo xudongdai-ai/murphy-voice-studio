@@ -3,15 +3,19 @@
 import base64
 from pathlib import Path
 
-APP_NAME = "ai唱歌克隆"
+APP_NAME = "Murphy Voice Studio"
 
 
-def load_brand_css():
+def load_brand_css(language="zh_CN"):
     assets = Path(__file__).resolve().parent
     artwork = base64.b64encode((assets / "ui" / "upload-art.svg").read_bytes()).decode("ascii")
-    return (assets / "brand.css").read_text(encoding="utf-8").replace(
+    css = (assets / "brand.css").read_text(encoding="utf-8").replace(
         "__UPLOAD_ART__", f"data:image/svg+xml;base64,{artwork}"
     )
+    if not language.startswith("zh"):
+        for original, translated in UPLOAD_TRANSLATIONS.items():
+            css = css.replace(original, translated)
+    return css
 
 
 HEADER_HTML = """
@@ -65,3 +69,45 @@ FOOTER_HTML = """
   <strong>ai唱歌克隆</strong><span>作者：MurphyProd1<span class="footer-divider">｜</span>有问题联系微信：MurphyProd1</span>
 </div>
 """
+
+
+UPLOAD_TRANSLATIONS = {
+    "将音频拖放到此处": "Drop your audio here",
+    'content: "或"': 'content: "or"',
+    "点击上传": "Click to upload",
+    "支持 WAV、MP3、FLAC、M4A 等音频格式": "WAV, MP3, FLAC, M4A and more",
+}
+
+BRAND_TRANSLATIONS = {
+    "有问题联系微信：": "Support on WeChat: ",
+    "让熟悉的声音，唱出新的可能": "A familiar voice. New possibilities.",
+    "用 AI 转换歌声与音色，从声音模型到音频导出，一站完成你的声音创作。":
+        "Transform singing voices with AI. From voice models to audio export, create your sound in one studio.",
+    "本地声音工作台": "Local voice studio",
+    "AI唱歌克隆": APP_NAME,
+    "ai唱歌克隆": APP_NAME,
+    "作者：": "Author: ",
+    "作者 ": "Author ",
+    "使用流程": "How it works",
+    "选择声音": "Choose a voice",
+    "载入目标模型与索引": "Load a model and index",
+    "上传音频": "Upload audio",
+    "添加需要转换的人声": "Add the vocals to convert",
+    "克隆与导出": "Clone and export",
+    "调整参数，生成新歌声": "Adjust settings and create vocals",
+}
+
+
+def get_app_name(language):
+    return "AI唱歌克隆" if language.startswith("zh") else APP_NAME
+
+
+def get_brand_html(language):
+    sections = [HEADER_HTML, WORKFLOW_HTML, FOOTER_HTML]
+    if not language.startswith("zh"):
+        for original, translated in BRAND_TRANSLATIONS.items():
+            sections = [section.replace(original, translated) for section in sections]
+    sections[0] = sections[0].replace(
+        'class="brand-shell"', f'class="brand-shell" data-language="{ "zh" if language.startswith("zh") else "en" }"'
+    )
+    return sections

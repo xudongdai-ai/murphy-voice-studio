@@ -245,7 +245,7 @@
     "Refresh Presets": "刷新预设",
     "Refresh embedders": "刷新嵌入器",
     "Report a Bug": "问题反馈",
-    "Restart Applio": "重启 Applio",
+    "Restart Applio": "重启工作台",
     "Reverb": "混响",
     "Reverb Damping": "混响阻尼",
     "Reverb Dry Gain": "混响干声增益",
@@ -275,7 +275,7 @@
     "Select the format to export the audio.": "选择导出音频的格式。",
     "Select the index file to be exported": "选择要导出的索引文件",
     "Select the index file to use for the conversion.": "选择用于转换的索引文件。",
-    "Select the language you want to use. (Requires restarting Applio)": "选择您想使用的语言。（需要重启 Applio）",
+    "Select the language you want to use. (Requires restarting Applio)": "选择语言后，点击“应用并重启”更新界面。",
     "Select the microphone or audio interface you will be speaking into.": "选择您将要使用的麦克风或音频接口。",
     "Select the precision you want to use for training and inference.": "选择您想用于训练和推理的精度。",
     "Select the pretrained model you want to download.": "选择您想下载的预训练模型。",
@@ -372,5 +372,8 @@
     "Volume Envelope": "音量包络",
     "Volume level below which audio is treated as silence and not processed. Helps to save CPU resources and reduce background noise.": "低于此音量级别的音频将被视为静音且不作处理。这有助于节省 CPU 资源并减少背景噪音。",
     "You can also use a custom path.": "您也可以使用自定义路径。",
-    "[Support](https://discord.gg/urxFjYmYYh) — [GitHub](https://github.com/IAHispano/Applio)": "[支持](https://discord.gg/urxFjYmYYh) — [GitHub](https://github.com/IAHispano/Applio)"
+    "[Support](https://discord.gg/urxFjYmYYh) — [GitHub](https://github.com/IAHispano/Applio)": "[支持](https://discord.gg/urxFjYmYYh) — [GitHub](https://github.com/IAHispano/Applio)",
+    "Apply and restart": "应用并重启",
+    "Language saved. Apply and restart to update the interface.": "语言已保存，点击“应用并重启”更新界面。",
+    "Applying language. The studio will restart and this page will reload.": "正在应用语言，工作台将重启并刷新此页面。"
 }

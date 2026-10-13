@@ -1,0 +1,22 @@
+{
+  "checks": [
+    {
+      "language": "en",
+      "title": "Murphy Voice Studio",
+      "tabs": 10,
+      "upload": "\"Drop your audio here\"",
+      "refresh": true,
+      "mobileWidth": 390
+    },
+    {
+      "language": "zh",
+      "title": "AI唱歌克隆",
+      "tabs": 10,
+      "upload": "\"将音频拖放到此处\"",
+      "refresh": true,
+      "mobileWidth": 390
+    }
+  ],
+  "switchBothDirections": true,
+  "errors": []
+}

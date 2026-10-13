@@ -11,7 +11,8 @@ import logging
 import inspect
 
 from typing import Any
-from assets.brand import APP_NAME, HEADER_HTML, WORKFLOW_HTML, FOOTER_HTML, load_brand_css
+from assets.brand import get_app_name, get_brand_html, load_brand_css
+from tabs.settings.sections.lang import language_switcher
 
 DEFAULT_SERVER_NAME = "127.0.0.1"
 DEFAULT_PORT = 6969
@@ -53,6 +54,8 @@ run_prerequisites_script(
 from assets.i18n.i18n import I18nAuto
 
 i18n = I18nAuto()
+APP_NAME = get_app_name(i18n.language)
+HEADER_HTML, WORKFLOW_HTML, FOOTER_HTML = get_brand_html(i18n.language)
 
 # Start Discord presence if enabled
 from tabs.settings.sections.presence import load_config_presence
@@ -76,7 +79,7 @@ client_mode = "--client" in sys.argv
 # Gradio 5 configures appearance in Blocks; Gradio 6 configures it in launch.
 ui_options = {
     "theme": my_applio,
-    "css": load_brand_css(),
+    "css": load_brand_css(i18n.language),
     "js": (
         pathlib.Path("tabs/realtime/main.js").read_text(encoding="utf-8")
         if client_mode
@@ -90,6 +93,7 @@ with gr.Blocks(
     title=APP_NAME,
     **({} if ui_options_in_launch else ui_options),
 ) as Applio:
+    language_switcher()
     gr.HTML(HEADER_HTML, elem_id="brand-header")
     with gr.Tabs(elem_id="main-tabs"):
         with gr.Tab(i18n("Inference")):
