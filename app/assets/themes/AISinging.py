@@ -1,0 +1,102 @@
+"""Warm ivory theme, using local fonts and the same palette in both OS modes."""
+
+import gradio as gr
+
+
+class AISinging(gr.themes.Soft):
+    def __init__(self):
+        warm_gold = gr.themes.Color(
+            c50="#faf5ef", c100="#f3e9dc", c200="#e5d1ba",
+            c300="#d5b695", c400="#c6a07c", c500="#ae896b",
+            c600="#957256", c700="#795b43", c800="#624a38",
+            c900="#4d3b2e", c950="#2d231c", name="warm_gold",
+        )
+        super().__init__(
+            primary_hue=warm_gold,
+            secondary_hue=warm_gold,
+            neutral_hue=gr.themes.colors.neutral,
+            font=("system-ui", "-apple-system", "PingFang SC", "Microsoft YaHei", "sans-serif"),
+            font_mono=("ui-monospace", "SFMono-Regular", "monospace"),
+        )
+        self.name = "AISinging"
+        # Pin both variants to retain the reference palette in dark OS mode.
+        palette = {
+            "body_background_fill": "#f8f5f0",
+            "body_text_color": "#302b27",
+            "body_text_color_subdued": "#837d77",
+            "background_fill_primary": "#fffdfb",
+            "background_fill_secondary": "#f6f0e9",
+            "border_color_primary": "#e9dfd5",
+            "border_color_accent": "#b28c6b",
+            "color_accent_soft": "#f4e9dc",
+            "block_background_fill": "#fffdfb",
+            "block_border_color": "#eee5dc",
+            "block_label_background_fill": "#fffdfb",
+            "block_label_text_color": "#302b27",
+            "block_title_text_color": "#302b27",
+            "block_info_text_color": "#837d77",
+            "block_shadow": "0 5px 22px rgba(97, 70, 44, .035)",
+            "input_background_fill": "#fffdfa",
+            "input_background_fill_hover": "#fffaf4",
+            "input_background_fill_focus": "#fffaf4",
+            "input_border_color": "#e5dacf",
+            "input_border_color_focus": "#b28c6b",
+            "input_border_color_hover": "#ccb39b",
+            "input_placeholder_color": "#a29a92",
+            "input_shadow": "none",
+            "input_shadow_focus": "0 0 0 2px rgba(174,137,107,.12)",
+            "button_primary_background_fill": "#ae8a6e",
+            "button_primary_background_fill_hover": "#987458",
+            "button_primary_border_color": "#ae8a6e",
+            "button_primary_border_color_hover": "#987458",
+            "button_primary_text_color": "#ffffff",
+            "button_primary_text_color_hover": "#ffffff",
+            "button_secondary_background_fill": "#fffdfb",
+            "button_secondary_background_fill_hover": "#f3e9de",
+            "button_secondary_border_color": "#e8d9cb",
+            "button_secondary_border_color_hover": "#c5a689",
+            "button_secondary_text_color": "#5a5148",
+            "button_secondary_text_color_hover": "#5d4330",
+            "checkbox_background_color": "#fffdfb",
+            "checkbox_background_color_selected": "#ae896b",
+            "checkbox_border_color": "#cbb8a6",
+            "checkbox_border_color_selected": "#ae896b",
+            "checkbox_label_background_fill": "#fffdfb",
+            "checkbox_label_background_fill_hover": "#f8f0e6",
+            "checkbox_label_background_fill_selected": "#f4e9dc",
+            "checkbox_label_text_color": "#5a5148",
+            "checkbox_label_text_color_selected": "#5d4330",
+            "panel_background_fill": "#fffdfb",
+            "panel_border_color": "#eee5dc",
+            "accordion_text_color": "#4a4037",
+            "link_text_color": "#795b43",
+            "link_text_color_hover": "#4d3b2e",
+            "slider_color": "#ae896b",
+            "loader_color": "#ae896b",
+            "table_border_color": "#e9dfd5",
+            "table_even_background_fill": "#fffdfb",
+            "table_odd_background_fill": "#faf5ef",
+        }
+        values = dict(palette)
+        values.update({f"{key}_dark": value for key, value in palette.items()})
+        self.set(
+            **values,
+            body_text_size="16px",
+            block_radius="18px",
+            block_padding="18px 22px",
+            block_label_radius="8px",
+            block_label_border_width="0px",
+            block_label_border_width_dark="0px",
+            block_title_text_weight="600",
+            input_radius="7px",
+            input_border_width="1px",
+            input_border_width_dark="1px",
+            input_padding="10px 14px",
+            input_text_size="16px",
+            button_large_radius="14px",
+            button_small_radius="10px",
+            button_large_text_size="16px",
+            button_large_text_weight="500",
+            layout_gap="14px",
+            form_gap_width="14px",
+        )

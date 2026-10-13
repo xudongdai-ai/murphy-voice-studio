@@ -1,0 +1,25 @@
+# Python / local environments
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+env/
+venv/
+.venv/
+.DS_Store
+# Runtime models and personal audio
+*.pth
+*.pt
+*.onnx
+*.index
+*.safetensors
+app/assets/audios/*
+!app/assets/audios/.gitkeep
+app/assets/datasets/*
+!app/assets/datasets/.gitkeep
+app/rvc/models/
+app/logs/*
+!app/logs/reference/
+*.log
+*.zip

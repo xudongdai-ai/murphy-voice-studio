@@ -1,0 +1,43 @@
+{
+  "title": "ai唱歌克隆",
+  "footer": "ai唱歌克隆\n作者：MurphyProd1｜有问题联系微信：MurphyProd1",
+  "tabsVerified": 12,
+  "refreshVerified": true,
+  "darkBackground": "rgb(248, 245, 240)",
+  "errors": [],
+  "desktop": {
+    "viewport": 1448,
+    "root": 1448,
+    "pageWidth": 1448
+  },
+  "mobile": {
+    "viewport": 390,
+    "pageWidth": 390,
+    "header": {
+      "x": 14,
+      "y": 24,
+      "width": 362,
+      "height": 286.953125
+    }
+  },
+  "checks": [
+    "Desktop app cold launch",
+    "Page title and contact",
+    "Requested footer lines absent",
+    "All main tabs and single/batch tabs",
+    "Model refresh callback",
+    "Desktop and mobile screenshots",
+    "No horizontal mobile overflow",
+    "No page script errors",
+    "Synthetic WAV upload reaches the real callback",
+    "Empty artwork clears when the player loads",
+    "Warm palette is retained in dark OS mode"
+  ],
+  "limitations": [
+    "No full audio conversion or training run",
+    "No clean install on a second machine",
+    "Gradio 6 compatibility branch not exercised locally"
+  ],
+  "uploadVerified": true,
+  "darkOSModeVerified": true
+}

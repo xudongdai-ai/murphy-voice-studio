@@ -1,0 +1,7 @@
+# Runtime files are excluded by the repository root .gitignore.
+# Keep bundled reference audio, images and requirements under version control.
+__pycache__/
+*.py[cod]
+env/
+venv/
+.venv/
