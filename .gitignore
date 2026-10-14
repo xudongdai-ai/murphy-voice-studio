@@ -27,3 +27,22 @@ app/logs/*
 # Generated packages and local verification artifacts
 backups/
 *.sha256
+
+# Generated desktop bundles
+/build/
+*.app/
+
+# Private recordings and extracted training features
+*.wav
+*.mp3
+*.flac
+*.m4a
+*.ogg
+*.aiff
+*.aac
+*.opus
+*.npy
+*.npz
+*.ckpt
+*.pkl
+*.pickle

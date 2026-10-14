@@ -1,0 +1,21 @@
+{
+  "isolatedSourcePreview": true,
+  "checks": [
+    {
+      "language": "en",
+      "modelChoices": 0,
+      "indexChoices": 0,
+      "audioChoices": 0,
+      "mobileWidth": 390,
+      "pageErrors": []
+    },
+    {
+      "language": "zh",
+      "modelChoices": 0,
+      "indexChoices": 0,
+      "audioChoices": 0,
+      "mobileWidth": 390,
+      "pageErrors": []
+    }
+  ]
+}
