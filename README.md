@@ -33,7 +33,7 @@ python app.py --open
 
 Default URL: `http://127.0.0.1:6969`. Put your `.pth` and `.index` models in `app/logs/<model-name>/`. The first launch downloads the required base models.
 
-On macOS, after configuring `app/env`, `app/.venv` or the root `.venv`, use `start.command`; `AI_CLONE_PYTHON` can specify another Python executable. The desktop launcher in `desktop/` requires an existing installation at `~/pinokio/api/applio.git/app`.
+On macOS, after configuring `app/env`, `app/.venv` or the root `.venv`, use `start.command`; `AI_CLONE_PYTHON` can specify another Python executable. The `desktop/Murphy Voice Studio.app` launcher requires an existing installation at `~/pinokio/api/applio.git/app`.
 
 Verified locally on macOS Apple Silicon with Python 3.10.15, Gradio 5.23.1 and PyTorch 2.7.1. The upstream installer targets Python 3.12. `environment-macos-python310.txt` records the local environment; it is not a cross-platform lockfile. A clean installation on another machine, Gradio 6, full training and voice conversion have not been reverified for this customization.
 
@@ -62,7 +62,7 @@ Developed as a customization of [Applio](https://github.com/IAHispano/Applio). [
 
 先按[原项目安装说明](app/README.md)配置 Python、FFmpeg 和对应平台的依赖，再执行上面的启动命令。网页默认地址为 `http://127.0.0.1:6969`。模型放到 `app/logs/<模型名>/`，首次启动会下载所需基础模型。
 
-macOS 配好 `app/env`、`app/.venv` 或根目录 `.venv` 后，可双击 `start.command`；也可通过 `AI_CLONE_PYTHON` 指定 Python 路径。`desktop/` 中的启动器依赖 `~/pinokio/api/applio.git/app` 的已有安装。
+macOS 配好 `app/env`、`app/.venv` 或根目录 `.venv` 后，可双击 `start.command`；也可通过 `AI_CLONE_PYTHON` 指定 Python 路径。`desktop/Murphy Voice Studio.app` 启动器依赖 `~/pinokio/api/applio.git/app` 的已有安装。
 
 本机验证环境为 macOS Apple Silicon、Python 3.10.15、Gradio 5.23.1、PyTorch 2.7.1。原始安装脚本默认 Python 3.12，环境快照仅供迁移参考。新机器安装、Gradio 6、完整训练和歌声转换流程未在本次定制中重新验证。
 

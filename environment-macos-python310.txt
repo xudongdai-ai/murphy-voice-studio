@@ -1,3 +1,5 @@
+# Murphy Voice Studio: verified local macOS Apple Silicon environment
+# Python 3.10.15; this snapshot is not a cross-platform dependency lockfile.
 absl-py==2.4.0
 aiofiles==23.2.1
 aiohappyeyeballs==2.6.1

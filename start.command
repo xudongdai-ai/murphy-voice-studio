@@ -13,8 +13,8 @@ elif [ -x "$APP_DIR/.venv/bin/python" ]; then
 elif [ -x "$PACKAGE_DIR/.venv/bin/python" ]; then
     PYTHON_BIN="$PACKAGE_DIR/.venv/bin/python"
 else
-    echo "请先按 README.md 安装依赖到 app/env 或 app/.venv。"
-    echo "这台 Mac 可直接双击桌面的 ai唱歌克隆.app。"
+    echo "Install dependencies in app/env or app/.venv following README.md."
+    echo "For an existing local installation, open Murphy Voice Studio.app."
     exit 1
 fi
 

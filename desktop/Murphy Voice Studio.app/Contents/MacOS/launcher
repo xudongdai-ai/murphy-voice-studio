@@ -4,7 +4,7 @@ set -u
 APP_DIR="$HOME/pinokio/api/applio.git/app"
 PYTHON_BIN="$APP_DIR/env/bin/python"
 APP_URL="http://127.0.0.1:6969"
-LOG_FILE="$HOME/Library/Logs/ai唱歌克隆.log"
+LOG_FILE="$HOME/Library/Logs/Murphy-Voice-Studio.log"
 export PATH="$HOME/pinokio/bin/miniconda/bin:/opt/homebrew/bin:$PATH"
 export PYTORCH_ENABLE_MPS_FALLBACK=1
 export NO_PROXY="${NO_PROXY:-},localhost,127.0.0.1"
@@ -16,7 +16,7 @@ if /usr/bin/curl --silent --fail --max-time 2 "$APP_URL/" >/dev/null 2>&1; then
 fi
 
 if [ ! -x "$PYTHON_BIN" ] || [ ! -f "$APP_DIR/app.py" ]; then
-    /usr/bin/osascript -e 'display alert "ai唱歌克隆启动失败" message "找不到项目或 Python 环境，请查看源码包中的启动说明。" as critical'
+    /usr/bin/osascript -e 'display alert "Murphy Voice Studio could not start" message "The application or Python environment was not found. See the setup instructions in README.md." as critical'
     exit 1
 fi
 
@@ -31,11 +31,11 @@ for _ in $(seq 1 60); do
         exit 0
     fi
     if ! kill -0 "$SERVER_PID" 2>/dev/null; then
-        /usr/bin/osascript -e 'display alert "ai唱歌克隆启动失败" message "服务未能启动，请查看 ~/Library/Logs/ai唱歌克隆.log。" as critical'
+        /usr/bin/osascript -e 'display alert "Murphy Voice Studio could not start" message "The server could not start. Check ~/Library/Logs/Murphy-Voice-Studio.log." as critical'
         exit 1
     fi
     sleep 1
 done
 
-/usr/bin/osascript -e 'display alert "ai唱歌克隆仍在启动" message "启动超过 60 秒，请查看 ~/Library/Logs/ai唱歌克隆.log 后重试。"'
+/usr/bin/osascript -e 'display alert "Murphy Voice Studio is still starting" message "Startup exceeded 60 seconds. Check ~/Library/Logs/Murphy-Voice-Studio.log and try again."'
 exit 1

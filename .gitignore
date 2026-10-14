@@ -23,3 +23,7 @@ app/logs/*
 !app/logs/reference/
 *.log
 *.zip
+
+# Generated packages and local verification artifacts
+backups/
+*.sha256
